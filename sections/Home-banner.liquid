@@ -1,0 +1,117 @@
+
+<div class="section-banner">
+    <div class="title-banner">
+        <div class="owl-carousel owl-theme" id="banner-carousel">
+            {% for block in section.blocks %}
+                <div class="bg-banner" style="background-image:url({{block.settings.banner-bg-img| img_url: 'master'}}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                   <div class="overlay-bg"></div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="banner-text">
+            <h1>{{ section.settings.headings }}</h1>
+                        <a href="{{ section.settings.link }}" class="button-banner">{{ section.settings.linktext }}</a>
+     
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+var owl = $('.owl-carousel');
+owl.owlCarousel({
+    items: 4,
+    loop: true,
+      autoplay: true,
+     autoplayTimeout: 2500,
+     autoplayHoverPause: true,
+    margin: 10,
+    responsive: {
+        0: {
+            items: 1 // Display one item on small screens
+        },
+        600: {
+            items: 1 // Display two items on screens wider than 600 pixels
+        },
+        1000: {
+            items: 1 // Display four items on screens wider than 1000 pixels
+        }
+        // You can add more breakpoints and set the number of items accordingly
+    }
+});
+</script>
+{% schema %}
+  {
+    "name": "Home-banner",
+    "settings": [
+                    {
+               "type":"text",
+               "id":"headings",
+               "label":"heading-first-Text"
+            },
+          
+        {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+ 
+        },
+
+          
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Get In Touch"
+    }
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Texts",
+        "settings": [
+
+           {
+                "type":"image_picker",
+                "id":"banner-bg-img",
+                "label":"Background-Image"
+             }
+          
+
+
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Home-banner"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

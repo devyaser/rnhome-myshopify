@@ -1,0 +1,68 @@
+
+<div class="section-images-window">
+    <div class="wrapper">
+    <h2>{{ section.settings.title }}</h2> 
+     <p class="para"> {{ section.settings.title1 }}</p>
+    
+  
+
+         <div class="main-images-window">
+                         <div class="flex">
+                {% for block in section.blocks %}
+                        <div class="image-images-window">           
+                        <img src="{{ block.settings.image | img_url: 'master' }}" >
+                          </div>
+             {% endfor %}
+              </div>
+              <div class="text-para-rows">  
+                   {{ section.settings.buy-text2 }} 
+                       
+                  </div> 
+  </div>
+  </div>
+ </div>
+
+
+{% schema %}
+  {
+    "name": "images-window",
+    "settings": [
+      {
+        "type" : "text",
+        "id" : "title",
+        "label" : "Heading"
+      },
+       {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading_two"
+      },
+         {
+        "type" : "richtext",
+        "id" : "buy-text2",
+        "label" : "text"
+      }
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Image",
+        "settings": [
+         {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          }
+
+          
+          
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "images-window"
+      }
+    ]
+  }
+{% endschema %}

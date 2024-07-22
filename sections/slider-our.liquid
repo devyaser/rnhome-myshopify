@@ -1,0 +1,67 @@
+
+<div class="slider-our">
+    <div class="wrapper">
+  <h5> Hear from our clients </h5>
+    
+  
+
+         <div class="owl-carousel owl-theme">
+                {% for block in section.blocks %}
+             <div class="textss item">           
+             <h4>{{ block.settings.blogs-heading1 }}</h4> 
+
+               </div>
+             {% endfor %}
+
+ </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+$('.owl-carousel ').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
+        }
+    }
+})
+
+  </script>
+
+{% schema %}
+{
+
+   "name":"slider-our",
+   "blocks":[
+      {
+		 "name": "Text",
+         "type":"text",
+         "settings": [
+    
+
+            {
+               "type":"text",
+               "id":"blogs-heading1",
+               "label":"Home blog Heading1"
+            }
+
+         ]
+      }
+   ],
+    "presets" : [
+      {
+        "name" : "slider-our"
+      }
+    ]
+}
+
+{% endschema %}

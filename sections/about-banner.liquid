@@ -1,0 +1,68 @@
+
+
+
+  <div class="section-about-banner">
+     <div class="wrapper">
+       <div class="flex">
+     <div class="about-images">
+      <img src="{{section.settings.image| img_url: 'master'}}" alt="">
+      
+         <div class="box1">
+          <h3>We are building things for the future </h3>
+              <div class="flex">
+                <div class="video">
+                  <p> Explore Video</p>
+             </div>   
+                  <div class="video-img">
+                   <a href=""><img src="https://cdn.shopify.com/s/files/1/0426/2838/2871/files/Group_14.png?v=1708691254" alt=""></a>
+             </div>
+         </div>
+        </div>
+ </div>
+       
+           <div class="about-text">
+            <h4>{{ section.settings.title1 }}</h4> 
+            <h5>{{ section.settings.title2 }}</h5> 
+       </div>
+ 
+ </div>
+</div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "about-banner",
+    "settings": [
+
+
+
+
+
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          },
+      
+    {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading"
+      },
+ 
+      {
+        "type" : "text",
+        "id" : "title2",
+        "label" : "Heading2"
+      }
+        
+    ],
+    "presets" : [
+      {
+        "name" : "about-banner"
+      }
+    ]
+  }
+{% endschema %}

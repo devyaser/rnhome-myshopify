@@ -1,0 +1,61 @@
+
+
+  <div class="team-section">
+     <div class="wrapper">
+       <div class="flex">
+                  <div class="team-text">
+              <h4>{{ section.settings.title1 }}</h5> 
+            {{ section.settings.buy-text1 }} 
+         <a href="{{ section.settings.link }}" class="button-our">{{ section.settings.linktext }}</a>
+       </div>
+     <div class="team-images">
+      <img src="{{section.settings.bg-img1| img_url: 'master'}}" alt="">
+      </div>
+  
+ </div>
+ </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Team-section",
+    "settings": [
+
+
+      
+               {
+                "type":"image_picker",
+                "id":"bg-img1",
+                "label":"Image"
+             },
+     {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading"
+      },
+      
+           {
+               "type":"richtext",
+               "id":"buy-text1",
+               "label":"last-Text"
+            },
+         {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "About Us"
+    }
+    ],
+      "presets": [
+    {
+      "name": "Team-section"
+    }
+  ]
+  }
+{% endschema %}

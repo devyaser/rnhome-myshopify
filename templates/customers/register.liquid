@@ -1,0 +1,99 @@
+<!-- /templates/customers/register.liquid -->
+<style>
+.eye1 {
+    position: absolute;
+    right: 2%;
+    top: 54%;
+  cursor:pointer;
+}
+  .eye2 {
+    position: absolute;
+    right: 2%;
+    top: 54%;
+  cursor:pointer;
+}
+  .Rn-Reg3{
+    position:relative;
+  }
+
+  .Rn-Reg4{
+    position:relative;
+  }
+  </style>
+<div class="grid main-box-Reg">
+
+  <div class="grid__item large--one-third push--large--one-third text-center  Reg-box">
+
+    <header class="section-header Reg--txt">
+      <h1> Sign Up </h1>
+
+    </header>
+
+    <div class="form-vertical form-Register">
+      {% form 'create_customer' %}
+          
+        {{ form.errors | default_errors }}
+        <div class="main-from-Reg">
+        <div class="Rn-Reg1">
+        <label for="phone">Email</label>
+        <input type="text" name="customer[first_name]" id="FirstName" class="input-full"  {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+        </div>
+          <div class="Rn-Reg2">
+        <label for="phone">Phone No.</label>
+        <input type="tel" id="phone" name="phone" required>
+        </div>
+
+          <div class="Rn-Reg3">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="customer[password]" required>
+         <img class="eye1" src="https://cdn.shopify.com/s/files/1/0426/2838/2871/files/view.png?v=1702298562">
+           </div>
+
+            <div class="Rn-Reg4">
+          <label for="confirm_password">Confirm Password</label>
+           <input type="password" id="confirm_password" name="customer[password_confirmation]" required>
+             <img class="eye2" src="https://cdn.shopify.com/s/files/1/0426/2838/2871/files/view.png?v=1702298562">
+            </div>
+        <p>
+          <input type="submit" class="btns btn--full"  value="Sign up">
+        </p>
+
+          <div class="text-Reg">
+         <p> <span> Already have an account? </span>  <a href="https://rnhome.myshopify.com/account/login">  Sign in  </a>       </p>
+          </div>
+      
+             <!-- <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a> -->
+       </div>
+      {% endform %}
+    </div>
+
+  </div>
+
+</div>
+<script>
+
+  $('.eye1').click(function() {
+        var passwordField = $('#password');
+        var passwordFieldType = passwordField.attr('type');
+        
+        if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+            $(this).attr("src","https://cdn.shopify.com/s/files/1/0426/2838/2871/files/hide_1.png?v=1702298497")
+        } else {
+          passwordField.attr('type', 'password');
+             $(this).attr("src","https://cdn.shopify.com/s/files/1/0426/2838/2871/files/view.png?v=1702298562")
+        }
+      });
+   $('.eye2').click(function() {
+        var passwordField = $('#confirm_password');
+        var passwordFieldType = passwordField.attr('type');
+        
+        if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+            $(this).attr("src","https://cdn.shopify.com/s/files/1/0426/2838/2871/files/hide_1.png?v=1702298497")
+        } else {
+          passwordField.attr('type', 'password');
+             $(this).attr("src","https://cdn.shopify.com/s/files/1/0426/2838/2871/files/view.png?v=1702298562")
+        }
+      });
+</script>

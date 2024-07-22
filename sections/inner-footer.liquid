@@ -1,0 +1,35 @@
+
+  <div class="section-footer-inner" style="background-image:url({{section.settings.banner-bg-img| img_url: 'master'}});  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; ">
+
+        <div class="wrapper">
+          <div class="inner-footer-text">
+        <h2>{{ section.settings.title }}</h2> 
+     
+ </div>
+ </div>
+ </div>
+{% schema %}
+  {
+    "name": "inner-footer",
+    "settings": [
+          {
+                "type":"image_picker",
+                "id":"banner-bg-img",
+                "label":"Background-Image"
+             },
+      {
+        "type" : "text",
+        "id" : "title",
+        "label" : "Heading"
+      }
+           
+    ],
+      "presets": [
+    {
+      "name": "inner-footer"
+    }
+  ]
+  }
+{% endschema %}

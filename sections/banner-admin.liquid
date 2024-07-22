@@ -1,0 +1,26 @@
+  <div class="banner-admin" style="background-image:url({{section.settings.banner-bg-img| img_url: 'master'}});  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; ">
+
+ </div>
+
+
+{% schema %}
+  {
+    "name": "banner-admin",
+    "settings": [
+          {
+                "type":"image_picker",
+                "id":"banner-bg-img",
+                "label":"Background-Image"
+             }
+      
+           
+    ],
+      "presets": [
+    {
+      "name": "banner-admin"
+    }
+  ]
+  }
+{% endschema %}

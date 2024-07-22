@@ -1,0 +1,74 @@
+
+  <div class="section-Malibu">
+  
+<div class="parent-container">
+  <div class="child-container" id="my_nanogallery2" data-nanogallery2='{
+        "thumbnailWidth": "650 XS135 SM350 ME450 LA600 XL650",
+        "thumbnailHeight": "auto",
+        "thumbnailBorderVertical": 0,
+        "thumbnailBorderHorizontal": 0,
+        "colorScheme": {
+          "thumbnail": {
+            "background": "rgba(255,255,255,1)"
+          }
+        },
+        "thumbnailLabel": {
+          "position": "overImageOnBottom",
+          "display": false
+        },
+        "thumbnailHoverEffect2": "imageScaleIn80|imageSepiaOff|labelAppear75",
+        "galleryLastRowFull": true,
+      "thumbnailGutterWidth": 20,
+         "thumbnailGutterHeight": 20,
+        "thumbnailAlignment": "center",
+        "thumbnailOpenImage": false
+      }'>
+ 
+   
+
+     {% for block in section.blocks %}
+          <a href="{{ block.settings.image | img_url: 'master' }}" data-ngthumb="{{ block.settings.image | img_url: 'master' }}"></a>
+           {% endfor %}
+  </div>
+
+  
+  </div>
+
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
+
+    
+{% schema %}
+  {
+    "name": "Malibu",
+    "settings": [
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Add Image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          }
+          
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Malibu"
+      }
+    ]
+  }
+{% endschema %}
+ 
+
+
+
+
+
+
+
+ 

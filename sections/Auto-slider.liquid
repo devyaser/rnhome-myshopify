@@ -1,0 +1,106 @@
+
+<div class="section-auto-slider">
+         <div class="owl-carousel owl-theme">
+                {% for block in section.blocks %}
+             <div class="item">           
+             <img src="{{ block.settings.image | img_url: 'master' }}" >
+
+               </div>
+             {% endfor %}
+
+ </div>
+  <!-- <p> Note: 3D renderings are available upon request.</p> -->
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+var owl = $('.owl-carousel');
+owl.owlCarousel({
+    items: 4,
+    loop: true,
+    margin: 0,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1 // Display one item on small screens
+        },
+        600: {
+            items: 2 // Display two items on screens wider than 600 pixels
+        },
+        1000: {
+            items: 3 // Display four items on screens wider than 1000 pixels
+        }
+        // You can add more breakpoints and set the number of items accordingly
+    }
+});
+
+$('.play').on('click', function () {
+    owl.trigger('play.owl.autoplay', [1000]);
+});
+
+$('.stop').on('click', function () {
+    owl.trigger('stop.owl.autoplay');
+});
+
+  </script>
+{% schema %}
+  {
+    "name": "Auto-slider",
+    "settings": [
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Add Image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Auto-slider"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,126 @@
+<!-- /templates/customers/login.liquid -->
+<style>
+.eye {
+    position: absolute;
+    right: 2%;
+    top: 33%;
+  cursor:pointer;
+}
+</style>
+<div class="grid box-form">
+
+  <div class="grid__item large--one-third push--large--one-third text-center form-Rn">
+
+    <header class="section-header login-text">
+      <h1>{{ 'customer.login.title' | t }}</h1>
+      <hr class="hr--small">
+    </header>
+
+    {% comment %}
+      If a user has successfully requested a new password, the form.posted_successfully? variable
+      is set to true within the 'recover_customer_password' form only. Within that form you'll see
+      the variable 'resetPassword' set to true, which is used to initialize timber.resetPasswordSuccess().
+    {% endcomment %}
+    <div class="note form-success" id="ResetSuccess" style="display:none;">
+      {{ 'customer.recover_password.success' | t }}
+    </div>
+
+    <div id="CustomerLoginForm" class=" form-login form-vertical">
+      {% form 'customer_login' %}
+
+        {{ form.errors | default_errors }}
+         <p class="text-para"> Username</p>
+        <label for="CustomerEmail" class="hidden-label">{{ 'customer.login.email' | t }}</label>
+        <div class="input-Rn">
+        <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}"  autocorrect="off" autocapitalize="off" autofocus>
+        </div>
+        {% if form.password_needed %}
+          <label for="CustomerPassword" class="hidden-label">{{ 'customer.login.password' | t }}</label>
+               <p class="text-para1"> Password</p>
+              <div class="input-pass">      
+          <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" 
+            >
+               <img class="eye" src="https://cdn.shopify.com/s/files/1/0426/2838/2871/files/view.png?v=1702298562">
+              </div>
+          <p class="re-cover"><a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a></p>
+        {% endif %}
+        
+
+        <p>
+          <input type="submit" class="btn btn--full" value="login">
+        </p>
+        <p class="foxt"><span>Don’t have account?</span><a href="https://rnhome.myshopify.com/account/register">   Sign up </a> </p>
+        <!-- <p><a href="{{ shop.url }}">{{ 'customer.login.cancel' | t }}</a></p> -->
+        {% if form.password_needed %}
+      
+        {% endif %}
+
+      {% endform %}
+    </div>
+
+    {% comment %}
+      JS shows/hides this form in timber.loginForms()
+    {% endcomment %}
+    <div id="RecoverPasswordForm" style="display: none;">
+
+      <h2>{{ 'customer.recover_password.title' | t }}</h2>
+      <p>{{ 'customer.recover_password.subtext' | t }}</p>
+      <hr class="hr--small">
+
+      <div class="form-vertical">
+        {% form 'recover_customer_password' %}
+
+          {{ form.errors | default_errors }}
+
+          {% comment %}
+            Assign variable to be used after timber.init() is run in theme.liquid
+          {% endcomment %}
+          {% if form.posted_successfully? %}
+            {% assign resetPassword = true %}
+          {% endif %}
+
+          <label for="RecoverEmail" class="hidden-label">{{ 'customer.recover_password.email' | t }}</label>
+          <input type="email" value="" name="email" id="RecoverEmail" class="input-full" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+
+          <p>
+            <input type="submit" class="btn btn--full" value="{{ 'customer.recover_password.submit' | t }}">
+          </p>
+          <button type="button" id="HideRecoverPasswordLink">{{ 'customer.recover_password.cancel' | t }}</button>
+        {% endform %}
+      </div>
+
+    </div>
+
+    {% comment %}
+      If accounts are set as optional, the following will be shown as an option
+      during checkout, not on the default /login page.
+    {% endcomment %}
+    {% if shop.checkout.guest_login %}
+      <hr class="hr--clear">
+
+      <h1>{{ 'customer.login.guest_title' | t }}</h1>
+      <hr class="hr--small">
+
+      {% form 'guest_login' %}
+        <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+      {% endform %}
+    {% endif %}
+
+  </div>
+
+</div>
+<script>
+
+  $('.eye').click(function() {
+        var passwordField = $('#CustomerPassword');
+        var passwordFieldType = passwordField.attr('type');
+        
+        if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+            $(this).attr("src","https://cdn.shopify.com/s/files/1/0426/2838/2871/files/hide_1.png?v=1702298497")
+        } else {
+          passwordField.attr('type', 'password');
+             $(this).attr("src","https://cdn.shopify.com/s/files/1/0426/2838/2871/files/view.png?v=1702298562")
+        }
+      });
+</script>

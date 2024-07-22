@@ -1,0 +1,133 @@
+<style>
+
+  header.custom_header .wrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:20px 0px;
+}
+
+.main-menu{
+    display:flex;
+    width: 100%;
+    margin: 0;
+}
+.main-menu li{
+   margin-right:20%;
+    list-style:none;
+}
+
+.main-menu li a{
+   font-size:24px;
+    transition: all 0.5s ease;
+}
+.main-menu li a.active {
+
+    border-bottom: 2px solid #706A69;
+}
+.main-menu li a:hover{
+    border-bottom: 2px solid #706A69;
+}
+</style>
+
+<header class="custom_header" style="background-color:{{ section.settings.background_color}}">
+      <div class="flex-mob">
+    <div class="logo-mob">
+<a href="{{ shop.url }}">
+    <img src="{{ section.settings.logo | img_url: '300x' }}" alt="Logo">
+</a>
+  </div>
+  <div class="menu-toggle">
+    <span class="menu-icon">&#9776;</span>
+    <span class="close-icon ">&times;</span>
+</div>
+      </div>
+   <div class="wrapper mob-hide">
+  <div class="menu1">
+    {% if section.settings.menu1 == 'right-menu' %}
+      {% render 'right-menu' %}
+    {% elsif section.settings.menu1 == 'left-menu' %}
+      {% render 'left-menu' %}
+    {% endif %}
+  </div>
+  <div class="logo">
+<a href="{{ shop.url }}">
+    <img src="{{ section.settings.logo | img_url: '300x' }}" alt="Logo">
+</a>
+  </div>
+  <div class="menu2">
+    {% if section.settings.menu2 == 'right-menu' %}
+      {% render 'right-menu' %}
+    {% elsif section.settings.menu2 == 'left-menu' %}
+      {% render 'left-menu' %}
+    {% endif %}
+  </div>
+     </div>
+</header>
+<script>
+  // Get the current URL path
+  var path = window.location.pathname;
+
+  // Select the appropriate menu item based on the URL
+  var menuItems = document.querySelectorAll('.menu1 a, .menu2 a');
+  menuItems.forEach(function(item) {
+    if (item.getAttribute('href') === path) {
+      item.classList.add('active'); // Add the 'active' class to the current menu item
+    }
+  });
+</script>
+
+<script>
+jQuery('.menu-toggle span.menu-icon').click(function(){
+    jQuery('.menu-toggle span.menu-icon').addClass('hide');
+     jQuery('.menu-toggle span.close-icon').addClass('show');
+    jQuery('header.custom_header .wrapper').addClass('new');
+  });
+    jQuery('.menu-toggle span.close-icon').click(function(){
+    jQuery('.menu-toggle span.close-icon').addClass('hide');
+    jQuery('.menu-toggle span.menu-icon').removeClass('hide');
+      jQuery('.menu-toggle span.close-icon').removeClass('show');
+    jQuery('header.custom_header .wrapper').removeClass('new');
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Header Settings",
+  "settings": [
+
+   {
+  "type": "color",
+  "id": "background_color",
+  "label": "Background Color",
+  "default": "#EAE9E5"
+},
+    {
+      "type": "select",
+      "id": "menu1",
+      "label": "Menu",
+      "options": [
+        {"value": "right-menu", "label": "Right Menu"},
+        {"value": "left-menu", "label": "Left Menu"}
+       
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "select",
+      "id": "menu2",
+      "label": "Menu",
+      "options": [
+        {"value": "right-menu", "label": "Right Menu"},
+        {"value": "left-menu", "label": "Left Menu"}
+       
+      ]
+    }
+  ]
+}
+
+{% endschema %}

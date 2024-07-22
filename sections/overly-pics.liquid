@@ -1,0 +1,50 @@
+
+
+<div class="section-overly-images">
+   <div class="wrapper">
+         <div class="main-pics">
+                {% for block in section.blocks %}
+                  <div class="over">
+             <div class="block_imgs">           
+             <img src="{{ block.settings.image | img_url: 'master' }}" >         
+               </div>
+            <div class="imgtext">
+            {{ block.settings.Text }} 
+             </div>
+                  </div>
+             {% endfor %}
+
+ </div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "overly-pics",
+    "settings": [
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Add Image",
+        "settings": [
+{
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          },
+       {
+               "type":"richtext",
+               "id":"Text",
+               "label":"text"
+            }
+
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "overly-pics"
+      }
+    ]
+  }
+{% endschema %}

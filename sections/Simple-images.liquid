@@ -1,0 +1,47 @@
+
+<div class="section-Simple-images">
+  
+         <div class="main-Simple-images">
+               <div class="flex">
+                {% for block in section.blocks %}
+                      
+             <div class="Simple-images">           
+               <img src="{{ block.settings.image | img_url: 'master' }}" >
+               </div>
+                 
+             {% endfor %}
+
+  </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Simple-images",
+    "settings": [
+     
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Image",
+        "settings": [
+      {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"         
+      }
+          
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Simple-images"
+      }
+    ]
+  }
+{% endschema %}
+

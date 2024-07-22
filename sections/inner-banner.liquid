@@ -1,0 +1,27 @@
+
+  <div class="section-banner-inner" style="background-image:url({{section.settings.banner-bg-img| img_url: 'master'}});  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; ">
+
+ </div>
+
+
+{% schema %}
+  {
+    "name": "inner-banner",
+    "settings": [
+          {
+                "type":"image_picker",
+                "id":"banner-bg-img",
+                "label":"Background-Image"
+             }
+      
+           
+    ],
+      "presets": [
+    {
+      "name": "inner-banner"
+    }
+  ]
+  }
+{% endschema %}

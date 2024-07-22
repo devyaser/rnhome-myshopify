@@ -1,0 +1,131 @@
+
+<div class="slider-section">
+    <div class="wrapper">
+     <h2>{{ section.settings.title1 }}</h2> 
+      <div class="para-textss">
+      {{ section.settings.buy-text1 }} 
+      </div>
+    </div>
+  
+
+         <div class="owl-carousel owl-theme">
+                {% for block in section.blocks %}
+             <div class="item">           
+    <img src="{{ block.settings.image | img_url: 'master' }}" >
+              <div class="slider-overly">  
+                 {{ block.settings.buy-text2 }} 
+                       </div> 
+
+               </div>
+             {% endfor %}
+
+ </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+var owl = $('.owl-carousel');
+owl.owlCarousel({
+    items: 4,
+    loop: true,
+    margin: 10,
+    autoplay: true,
+     autoplayTimeout: 2000,
+     autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1 // Display one item on small screens
+        },
+        600: {
+            items: 2 // Display two items on screens wider than 600 pixels
+        },
+        1000: {
+            items: 4 // Display four items on screens wider than 1000 pixels
+        }
+        // You can add more breakpoints and set the number of items accordingly
+    }
+});
+
+$('.play').on('click', function () {
+    owl.trigger('play.owl.autoplay', [1000]);
+});
+
+$('.stop').on('click', function () {
+    owl.trigger('stop.owl.autoplay');
+});
+
+  </script>
+{% schema %}
+  {
+    "name": "slider-section",
+    "settings": [
+      {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading"
+      },
+        {
+               "type":"richtext",
+               "id":"buy-text1",
+               "label":"last-Text"
+            }
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Add Image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          },
+               {
+               "type":"richtext",
+               "id":"buy-text2",
+               "label":"last-Text"
+            }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "slider-section"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

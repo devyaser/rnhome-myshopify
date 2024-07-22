@@ -1,0 +1,75 @@
+
+<div class="section-Meet-section">
+    <div class="wrapper">
+         <div class="main-meets">
+                {% for block in section.blocks %}
+                          <div class="flex">
+                        <div class="images-ones">           
+                        <img src="{{ block.settings.image | img_url: 'master' }}" >
+                          </div>
+                        <div class="text-text">  
+                          <h2>{{ block.settings.title }}</h2> 
+                           {{ block.settings.buy-text3 }} 
+                              <a href="{{ block.settings.link }}" class="button-our">{{ block.settings.linktext }}</a>
+                       </div> 
+             
+                
+                   </div>
+             {% endfor %}
+
+
+  </div>
+  </div>
+ </div>
+
+
+{% schema %}
+  {
+    "name": "Meet-section",
+    "settings": [
+        
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Image",
+        "settings": [
+         {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          },
+
+          
+           {
+        "type" : "text",
+        "id" : "title",
+        "label" : "heading"
+      },
+                    {
+        "type" : "richtext",
+        "id" : "buy-text3",
+        "label" : "text"
+      },
+     {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "MEET OUR TEAM"
+    }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Meet-section"
+      }
+    ]
+  }
+{% endschema %}

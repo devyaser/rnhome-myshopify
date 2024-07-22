@@ -1,0 +1,76 @@
+
+<div class="section-top">
+<div class="wrapper">
+<div class="main-top-texts">
+
+  
+ {% for block in section.blocks %}
+       <div class="flex">
+        <div class="text-top">
+        <h5>  {{ block.settings.top-text }} </h5>
+          </div>
+       <div class="text-lefts">
+               {{ block.settings.buy-text2 }} 
+           <a href="{{ block.settings.link }}" class="button-our">{{ block.settings.linktext }}</a>
+          </div>
+          </div>
+{% endfor %}
+    </div>
+  </div>
+     </div>
+
+      
+{% schema %}
+{
+
+   "name":"process-top-section",
+   "blocks":[
+      {
+		 "name": "text",
+         "type":"text",
+         "settings": [
+
+
+           
+        {
+        "type" : "text",
+        "id" : "top-text",
+        "label" : "text"
+      },
+  
+      
+        {
+        "type" : "richtext",
+        "id" : "buy-text2",
+        "label" : "text"
+      },
+
+     {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "START YOUR PROJECT"
+    }
+       
+
+
+         ]
+      }
+   ]
+       
+  }
+{% endschema %}
+
+
+
+
+
+
+
+

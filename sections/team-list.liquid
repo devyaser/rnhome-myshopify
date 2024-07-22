@@ -1,0 +1,73 @@
+
+<div class="section-team-list">
+    <div class="wrapper">
+    <h2>{{ section.settings.title }}</h2> 
+      <p class="cent">{{ section.settings.title1 }}</p> 
+    
+  
+
+         <div class="main-team-list">
+            <div class="flex">
+                {% for block in section.blocks %}
+             <div class="list-images">           
+               <img src="{{ block.settings.image | img_url: 'master' }}" >
+                     <h3>{{ block.settings.Name-team }}</h3> 
+                 {{ block.settings.buy-text2 }} 
+        
+               </div>
+             {% endfor %}
+
+ </div>
+  </div>
+</div>
+ </div>
+
+
+{% schema %}
+  {
+    "name": "team-list",
+    "settings": [
+      {
+        "type" : "text",
+        "id" : "title",
+        "label" : "Heading"
+      },
+       {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading_two"
+      }
+       
+        
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          },
+               {
+        "type" : "text",
+        "id" : "Name-team",
+        "label" : "names"
+      },
+           {
+        "type" : "richtext",
+        "id" : "buy-text2",
+        "label" : "name_text"
+      }
+       
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "team-list"
+      }
+    ]
+  }
+{% endschema %}

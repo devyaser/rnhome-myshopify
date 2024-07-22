@@ -1,0 +1,107 @@
+
+<div class="section-Procurment-rows">
+    <div class="wrapper">
+    <h2>{{ section.settings.title }}</h2> 
+     <p> {{ section.settings.title1 }}</p>
+    
+  
+
+         <div class="main-Procurment-rows">
+                {% for block in section.blocks %}
+                          <div class="flex">
+                        <div class="images-Procurment-rows main-sx">           
+                        <img src="{{ block.settings.image | img_url: 'master' }}" >
+                          </div>
+
+
+
+                            
+                        <div class="text-Procurment-rows">  
+                         {{ block.settings.buy-text2 }} 
+                       
+                       </div> 
+             
+                
+                   </div>
+             {% endfor %}
+
+
+  </div>
+  </div>
+ </div>
+
+<script>
+   jQuery('.main-Procurment-rows .flex:nth-child(1) .main-sx').on('mousemove', function(e) {
+        var $image = jQuery(this).find('img');
+        var containerWidth = jQuery(this).width();
+        var containerHeight = jQuery(this).height();
+        var imageWidth = $image.width();
+        var imageHeight = $image.height();
+        var offsetX = (e.pageX - jQuery(this).offset().left) / containerWidth;
+        var offsetY = (e.pageY - jQuery(this).offset().top) / containerHeight;
+        var scale = 1.5; // Adjust scaling factor as needed
+        // Calculate scaling factor for X and Y axes based on mouse position
+        var scaleX = scale;
+        var scaleY = scale;
+        // Calculate the transform origin point
+        var originX = offsetX * 100 + '%';
+        var originY = offsetY * 100 + '%';
+        // Apply CSS transformations
+        $image.css({
+            'transform': 'scale(' + scaleX + ',' + scaleY + ')',
+            'transform-origin': originX + ' ' + originY
+        });
+    });
+    jQuery('.main-sx').on('mouseleave', function() {
+        var $image = jQuery(this).find('img');
+        $image.css({
+            'transform': 'scale(1)',
+            'transform-origin': '50% 50%' // Reset transform origin
+        });
+    });
+</script>
+{% schema %}
+  {
+    "name": "Procurment-rows",
+    "settings": [
+      {
+        "type" : "text",
+        "id" : "title",
+        "label" : "Heading"
+      },
+       {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading_two"
+      }
+        
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Image",
+        "settings": [
+         {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          },
+
+          
+           {
+        "type" : "richtext",
+        "id" : "buy-text2",
+        "label" : "text"
+      }
+
+  
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Procurment-rows"
+      }
+    ]
+  }
+{% endschema %}

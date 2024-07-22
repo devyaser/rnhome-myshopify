@@ -1,0 +1,55 @@
+
+<div class="section-Follow-us">
+    <div class="wrapper">
+    <h2>{{ section.settings.title1 }}</h2> 
+    
+  
+
+         <div class="follow_us">
+            <div class="flex">
+                {% for block in section.blocks %}
+             <div class="images_us">           
+             <img class="fit"src="{{ block.settings.image | img_url: 'master' }}" >
+               <div class="icons-overly">  
+              <a href=" http://www.instagram.com/rninteriordesign">  <img src="https://cdn.shopify.com/s/files/1/0426/2838/2871/files/Group_83.png?v=1708685068" alt="">  </a>    
+                       </div> 
+               </div>
+             {% endfor %}
+
+ </div>
+  </div>
+</div>
+ </div>
+
+
+{% schema %}
+  {
+    "name": "social-us",
+    "settings": [
+      {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading"
+      }
+        
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Add Image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "social-us"
+      }
+    ]
+  }
+{% endschema %}

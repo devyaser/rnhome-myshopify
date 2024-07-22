@@ -1,0 +1,46 @@
+    <div class="section-featured-images">
+    <div class="wrapper">
+   <h4>{{ section.settings.title1 }}</h5> 
+          <div class="main-logs">
+                 <div class="flex">
+     {% for block in section.blocks %}
+        
+        <div class="loges-imgs">
+          <img src="{{ block.settings.image | img_url: 'master' }}" >
+            </div>
+             
+             {% endfor %}
+    </div>
+  </div>
+    </div>
+      </div>
+{% schema %}
+  {
+    "name": "Featured-images",
+    "settings": [
+      {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading"
+      }
+    ],
+    "blocks" : [
+      {
+        "type" : "image_picker",
+        "name" : "Add Image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Featured-images"
+      }
+    ]
+  }
+{% endschema %}

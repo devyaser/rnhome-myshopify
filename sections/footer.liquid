@@ -1,0 +1,62 @@
+ <div class="Footer-section">
+      <div class="wrapper">
+ <div class="main-Footer">
+<div class="footer-Menus">
+  <div class="flex">
+ <div class="Footer-logos">
+   <img src="{{section.settings.footer-logo| img_url: 'master'}}" alt="">
+ </div>
+   
+   <div class="Footer-Text">
+     {{ section.settings.footer-text }} 
+   </div>
+    
+
+</div>
+ </div>
+
+<div class="Footer-icons">
+          <div class="icons-boxs">
+       <a href="https://www.facebook.com/RNInteriorDesign">   <i class="fa-brands fa-facebook"></i> </a>
+       </div>
+     <div class="icons-boxs">
+       <a href=" http://www.instagram.com/rninteriordesign">    <img src="https://cdn.shopify.com/s/files/1/0426/2838/2871/files/Group_83_e30450b6-b7b7-452a-8ff9-c03ccdd89188.png?v=1713459206" alt=""> </a>
+     </div>
+       <div class="icons-boxs">
+       <a href="https://www.linkedin.com/in/rania-nasser-rid-06651a68/">  <i class="fa-brands fa-linkedin-in"></i> </a>
+       </div>
+    </div>
+   
+   <div class="footer-newsletter">
+  {% render 'newsletter' %}
+</div>
+ </div>
+        
+ </div>
+ </div>
+ 
+
+ {% schema %}
+  {
+    "name": "footer",
+    "settings": [
+
+
+         {
+                "type":"image_picker",
+                "id":"footer-logo",
+                "label":"footer-logo"
+             
+           },
+   
+      
+          {
+               "type":"richtext",
+               "id":"footer-text",
+               "label":"footer-text"
+            }
+
+      
+    ]
+  }
+{% endschema %}

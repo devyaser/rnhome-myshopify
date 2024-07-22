@@ -1,0 +1,140 @@
+
+
+
+  <div class="section-contact-banner">
+     <div class="wrapper">
+       <div class="flex">
+     <div class="contact-banner-img">
+      <img src="{{section.settings.image| img_url: 'master'}}" alt="">
+ </div>
+       
+           <div class="contact-banner-text">
+            <h4>{{ section.settings.title1 }}</h4> 
+          {{ section.settings.title2 }}
+                  <div class="Call-List">
+                  <ul>  
+                   <li> E:  <a href="mailto:info@rninteriordesign.com ">info@rninteriordesign.com </a></li>
+                    
+                  </ul>
+                </div>
+             <div class="new-page-contact">
+                   <h5>{{ section.settings.titless }}</h5> 
+<div class="grid">
+  <div class="grid__item large--five-sixths push--large--one-twelfth">
+<!-- 
+    <header class="section-header text-center">
+      <h1>{{ page.title }}</h1>
+      <hr class="hr--small">
+    </header> -->
+
+    <div class="grid">
+      <div class="grid__item large--four-fifths push--large--one-tenth">
+        <div class="rte rte--nomargin rte--indented-images">
+          {{ page.content }}
+        </div>
+
+        <div class="form-vertical">
+          {% form 'contact' %}
+
+            {% comment %}
+              Successful message
+            {% endcomment %}
+            {% if form.posted_successfully? %}
+              <p class="note form-success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+            {% endif %}
+
+            {{ form.errors | default_errors }}
+
+            <div class="grid grid--small">
+              <div class="grid__item large--one-half">
+                <label for="ContactFormName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+                <input type="text" id="ContactFormName" class="input-full" name="contact[{{ 'contact.form.name' | t }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+              </div>
+
+              <div class="grid__item large--one-half">
+                <label for="ContactFormEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
+                <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+              </div>
+            </div>
+            
+
+             <div class="grid grid--small">
+              <div class="grid__item large--one-half">
+            <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+            <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ 'contact.form.phone' | t }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+              </div>
+
+              <div class="grid__item large--one-half">
+                    <input type="text" id="dob" name="dob" placeholder="Desired start date" required>
+              </div>
+            </div>
+
+                  <div class="text-filed">
+               <input type="text" id="username" name="username" placeholder="Budget" required>
+                  </div>
+            
+                <label for="ContactFormMessage" class="hidden-label">{{ 'contact.form.message' | t }}</label>
+                <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[{{ 'contact.form.message' | t }}]" placeholder="Tell us a little bit more about your project and vision... ">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            
+            <label for="ContactFormMessage" class="hidden-label">{{ 'contact.form.message' | t }}</label>
+            <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[{{ 'contact.form.message' | t }}]" placeholder="Anything else you’d like us to know?">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              <div class="buttons-sub">
+            <input type="submit" class="btn right" value="Submit">
+                 </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+       </div>
+ 
+ </div>
+</div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "contact-banner",
+    "settings": [
+
+
+
+
+
+          {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Image"
+          },
+      
+    {
+        "type" : "text",
+        "id" : "title1",
+        "label" : "Heading"
+      },
+  {
+        "type" : "text",
+        "id" : "titless",
+        "label" : "Heading2"
+      },
+      {
+        "type" : "richtext",
+        "id" : "title2",
+        "label" : "Heading2"
+      }
+        
+    ],
+    "presets" : [
+      {
+        "name" : "contact-banner"
+      }
+    ]
+  }
+{% endschema %}

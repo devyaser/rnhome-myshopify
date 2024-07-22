@@ -1,0 +1,54 @@
+
+
+  <div class="section-image-text">
+     <div class="wrapper">
+       <div class="flex">
+  
+           <div class="image-text">
+            {{ section.settings.buy-text1 }} 
+             <div class="cents">
+         <a href="{{ section.settings.link }}" class="button-our">{{ section.settings.linktext }}</a></div>
+       </div>
+ </div>
+ </div>
+</div>
+
+{% schema %}
+  {
+    "name": "image-text",
+    "settings": [
+
+
+      
+               {
+                "type":"image_picker",
+                "id":"bg-img1",
+                "label":"Image"
+             },
+
+      
+           {
+               "type":"richtext",
+               "id":"buy-text1",
+               "label":"last-Text"
+            },
+         {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Our Process"
+    }
+    ],
+      "presets": [
+    {
+      "name": "image-text"
+    }
+  ]
+  }
+{% endschema %}
